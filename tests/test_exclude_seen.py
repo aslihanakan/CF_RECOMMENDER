@@ -25,6 +25,7 @@ from src.evaluation import evaluate                                # noqa: E402
 from src.filtering import (                                        # noqa: E402
     FILTERED_SCORE, apply_exclude_seen, validate_indices,
 )
+from src.models.item_knn import ItemKNNModel                       # noqa: E402
 from src.models.popularity import PopularityModel                  # noqa: E402
 
 RESULTS = []
@@ -73,18 +74,20 @@ print(f"\nSecilen kullanici U={U}, train label==0 urunu J={J} (populerlik={int(r
       f"global sira={int(np.where(np.argsort(-pop) == J)[0][0]) + 1})")
 
 # ---------------------------------------------------------------------------
-print("\n[1] Canli mod: label==0 urun oneride YOK")
-old, w_old = caught(model.recommend_topk, U, mat, k=10, exclude_seen=True)   # eski davranis (seen_matrix yok)
+print("\n[1] Canli mod: label==0 urun oneride YOK + seen_matrix zorunlulugu")
+old = model.recommend_topk(U, mat, k=10, exclude_seen=True, seen_matrix=mat, mode="live")  # eski davranis: sadece label==1
 new = model.recommend_topk(U, mat, k=10, exclude_seen=True, seen_matrix=seen, mode="live")
 new_full = model.recommend_topk(U, mat, k=N_ITEMS, exclude_seen=True, seen_matrix=seen, mode="live")
 user_seen = seen.indices[seen.indptr[U]:seen.indptr[U + 1]]
 check("Eski davranis (sadece label==1) J'yi top-10'da oneriyordu (hata yeniden uretildi)", J in old,
-      f"eski top10={old.tolist()}, uyari={'var' if w_old else 'yok'}")
+      f"eski top10={old.tolist()}")
 check("Yeni canli mod: J top-10'da yok", J not in new, f"yeni top10={new.tolist()}")
 check("Yeni canli mod: J tam katalog listesinde de yok", J not in new_full)
 check("Yeni canli mod: kullanicinin bildigi HICBIR urun listede yok",
       not np.isin(new_full, user_seen).any(), f"bilinen urun sayisi={len(user_seen)}")
 check("Tam liste boyu = katalog - bilinen", len(new_full) == N_ITEMS - len(user_seen))
+msg_pop_noseen = raises(ValueError, model.recommend_topk, U, mat, k=10, exclude_seen=True)
+check("PopularityModel: seen_matrix verilmezse ValueError firlatir", msg_pop_noseen is not None, msg_pop_noseen or "")
 
 # ---------------------------------------------------------------------------
 print("\n[2] Offline mod: val/test hedefi filtrelenmiyor")
@@ -185,6 +188,20 @@ for split, cands_dict in [("val", val_c), ("test", test_c)]:
     res2 = evaluate(wrapped, cands_dict, cold_items=data["cold_items"], verbose=False)
     check(f"{split}: offline filtre eklenmis degerlendirme birebir ayni",
           res2["overall"]["hit_rate"] == hr and res2["overall"]["ndcg"] == nd)
+
+# ---------------------------------------------------------------------------
+print("\n[8] ItemKNNModel: seen_matrix kontrolu ve Val regresyonu")
+knn = ItemKNNModel.load("saved_models/itemknn")
+msg_knn_noseen = raises(ValueError, knn.recommend_topk, U, k=10, exclude_seen=True)
+check("ItemKNNModel: seen_matrix verilmezse ValueError firlatir", msg_knn_noseen is not None, msg_knn_noseen or "")
+knn_full = [i for i, _ in knn.recommend_topk(U, k=N_ITEMS, exclude_seen=True, seen_matrix=seen, mode="live")]
+check("ItemKNNModel canli mod: kullanicinin bildigi HICBIR urun (label 0+1) listede yok",
+      (J not in knn_full) and (not np.isin(knn_full, user_seen).any()),
+      f"liste boyu={len(knn_full)}, beklenen={N_ITEMS - len(user_seen)}")
+res_knn_val = evaluate(knn.score, val_c, cold_items=data["cold_items"], user_activity=data["user_activity"], verbose=False)
+hr_k, nd_k = res_knn_val["overall"]["hit_rate"], res_knn_val["overall"]["ndcg"]
+check(f"ItemKNNModel val: HR@10={hr_k:.6f} (ref 0.6400)  NDCG@10={nd_k:.6f} (ref 0.4520)",
+      abs(hr_k - 0.6400216) <= 1e-5 and abs(nd_k - 0.4520270) <= 1e-5)
 
 # ---------------------------------------------------------------------------
 n_ok = sum(ok for _, ok in RESULTS)

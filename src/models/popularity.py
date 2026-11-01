@@ -200,17 +200,17 @@ class PopularityModel:
 
         PARAMETRELER:
             uid          : int         — kullanıcı indeksi
-            train_matrix : csr_matrix  — etkileşim matrisi (geriye uyumluluk için;
-                                         seen_matrix verilmezse filtre buna düşer)
+            train_matrix : csr_matrix  — etkileşim matrisi (imza uyumluluğu için)
             k            : int         — önerilecek ürün sayısı (varsayılan 10)
             exclude_seen : bool        — True ise bilinen ürünleri hariç tut
             seen_matrix  : csr_matrix  — load_data()["seen_matrix"] (label 0+1).
-                                         ÖNERİLEN. Verilmezse sadece train_matrix
-                                         (label==1) filtrelenir ve uyarı basılır.
+                                         exclude_seen=True iken ZORUNLUDUR;
+                                         verilmezse ValueError fırlatılır.
             mode         : "live" | "offline" — bkz. filtering.apply_exclude_seen
             target_items : offline modda korunacak val/test hedef ürün(ler)i
 
         DAVRANIŞ (girdi doğrulaması):
+            - exclude_seen=True ve seen_matrix=None -> ValueError.
             - Bilinmeyen/negatif uid -> hata yok; uyarı + saf popülerlik sıralaması
               (geçmiş olmadığı için filtre uygulanmaz).
             - k <= 0 -> boş dizi.
@@ -226,6 +226,11 @@ class PopularityModel:
         k_arr = np.asarray(k)
         if k_arr.ndim != 0 or k_arr.dtype == bool or not np.issubdtype(k_arr.dtype, np.integer):
             raise TypeError(f"k tek bir tam sayı olmalı; gelen: {k!r}")
+        if exclude_seen and seen_matrix is None:
+            raise ValueError(
+                "exclude_seen=True iken seen_matrix zorunludur "
+                "(load_data()['seen_matrix'] verin)."
+            )
         if k <= 0:
             return np.empty(0, dtype=np.int64)
 
@@ -240,17 +245,9 @@ class PopularityModel:
                 stacklevel=2,
             )
         elif exclude_seen:
-            if seen_matrix is None:
-                warnings.warn(
-                    "seen_matrix verilmedi; sadece train_matrix'teki ürünler "
-                    "filtreleniyor (label==0 ürünler tekrar önerilebilir). "
-                    "load_data()['seen_matrix'] verin.",
-                    stacklevel=2,
-                )
-            filter_matrix = seen_matrix if seen_matrix is not None else train_matrix
             # Görülen ürünler -1e9 alır (offline modda hedef korunur)
             scores = apply_exclude_seen(
-                scores, np.arange(self.n_items), uid, filter_matrix,
+                scores, np.arange(self.n_items), uid, seen_matrix,
                 mode=mode, target_items=target_items,
             )
 

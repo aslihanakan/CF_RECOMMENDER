@@ -2,9 +2,12 @@
 import json
 import time
 from pathlib import Path
+from typing import Optional
 
 import numpy as np
 import scipy.sparse as sp
+
+from src.filtering import FILTERED_SCORE, apply_exclude_seen
 
 
 class ItemKNNModel:
@@ -93,19 +96,38 @@ class ItemKNNModel:
     def _topk(self, scores: np.ndarray, k: int, exclude) -> list:
         scores = scores.copy()
         if exclude is not None and len(exclude) > 0:
-            scores[np.asarray(exclude, dtype=np.int64)] = -np.inf
+            scores[np.asarray(exclude, dtype=np.int64)] = FILTERED_SCORE
         k = min(k, len(scores))
+        if k <= 0:
+            return []
         idx = np.argpartition(-scores, k - 1)[:k]
         idx = idx[np.argsort(-scores[idx])]
-        return [(int(i), float(scores[i])) for i in idx if np.isfinite(scores[i])]
+        return [(int(i), float(scores[i])) for i in idx if scores[i] > FILTERED_SCORE]
 
-    def recommend_topk(self, uid: int, k: int = 10, exclude_seen: bool = True, extra_exclude=None) -> list:
+    def recommend_topk(
+        self,
+        uid: int,
+        k: int = 10,
+        exclude_seen: bool = True,
+        seen_matrix: Optional[sp.csr_matrix] = None,
+        mode: str = "live",
+        target_items=None,
+        extra_exclude=None,
+    ) -> list:
         """Tüm ürünler arasından Top-K. Döner: [(item_idx, skor), ...]."""
+        if exclude_seen and seen_matrix is None:
+            raise ValueError(
+                "exclude_seen=True iken seen_matrix zorunludur "
+                "(load_data()['seen_matrix'] verin)."
+            )
         liked = self._liked_of(uid)
-        exclude = list(liked) if exclude_seen else []
-        if extra_exclude is not None:
-            exclude = exclude + list(extra_exclude)
-        return self._topk(self._all_scores(liked), k, exclude)
+        scores = self._all_scores(liked)
+        if exclude_seen:
+            scores = apply_exclude_seen(
+                scores, np.arange(self.W.shape[0]), uid, seen_matrix,
+                mode=mode, target_items=target_items,
+            )
+        return self._topk(scores, k, extra_exclude)
 
     def recommend_from_items(self, liked_items, k: int = 10) -> list:
         """Yeni kullanıcı (tercih formu): seçtiği oyunlardan Top-K, seçtikleri hariç."""
