@@ -1,0 +1,1891 @@
+{
+  "main_comparison_table": [
+    {
+      "model": "Popularity",
+      "hr_at_10": 0.5488,
+      "ndcg_at_10": 0.3369,
+      "precision_at_10": 0.0549,
+      "recall_at_10": 0.5488,
+      "pool_cov_at_10_pct": 19.84,
+      "pool_cov_at_10_n": 5082,
+      "catalog_cov_at_10_pct": 0.06,
+      "catalog_cov_known_pct": 0.06,
+      "unique_rec_items_10k": 15,
+      "top100_pop_share_pct": 100.0,
+      "mean_pop_percentile_rank": 99.98,
+      "recommend_10k_seconds": 15.45,
+      "ms_per_user": 1.545,
+      "rss_before_mb": 732.79,
+      "peak_rss_mb": 745.11,
+      "tracemalloc_peak_mb": 4.78,
+      "fit_seconds": 0.05,
+      "disk_size_mb": 0.1
+    },
+    {
+      "model": "Item-kNN (pw=0)",
+      "hr_at_10": 0.5714,
+      "ndcg_at_10": 0.421,
+      "precision_at_10": 0.0571,
+      "recall_at_10": 0.5714,
+      "pool_cov_at_10_pct": 99.67,
+      "pool_cov_at_10_n": 25526,
+      "catalog_cov_at_10_pct": 50.85,
+      "catalog_cov_known_pct": 51.33,
+      "unique_rec_items_10k": 13022,
+      "top100_pop_share_pct": 28.68,
+      "mean_pop_percentile_rank": 86.0,
+      "recommend_10k_seconds": 21.6,
+      "ms_per_user": 2.16,
+      "rss_before_mb": 743.66,
+      "peak_rss_mb": 746.86,
+      "tracemalloc_peak_mb": 4.95,
+      "fit_seconds": 11.84,
+      "disk_size_mb": 20.25
+    },
+    {
+      "model": "Item-kNN (pw=0.01)",
+      "hr_at_10": 0.64,
+      "ndcg_at_10": 0.452,
+      "precision_at_10": 0.064,
+      "recall_at_10": 0.64,
+      "pool_cov_at_10_pct": 91.04,
+      "pool_cov_at_10_n": 23316,
+      "catalog_cov_at_10_pct": 16.68,
+      "catalog_cov_known_pct": 16.84,
+      "unique_rec_items_10k": 4272,
+      "top100_pop_share_pct": 62.7,
+      "mean_pop_percentile_rank": 97.06,
+      "recommend_10k_seconds": 22.81,
+      "ms_per_user": 2.281,
+      "rss_before_mb": 744.86,
+      "peak_rss_mb": 746.95,
+      "tracemalloc_peak_mb": 4.95,
+      "fit_seconds": 11.84,
+      "disk_size_mb": 20.25
+    },
+    {
+      "model": "ALS MF (f=32, α=150, it=50)",
+      "hr_at_10": 0.691,
+      "ndcg_at_10": 0.5029,
+      "precision_at_10": 0.0691,
+      "recall_at_10": 0.691,
+      "pool_cov_at_10_pct": 89.77,
+      "pool_cov_at_10_n": 22989,
+      "catalog_cov_at_10_pct": 8.26,
+      "catalog_cov_known_pct": 8.34,
+      "unique_rec_items_10k": 2116,
+      "top100_pop_share_pct": 32.17,
+      "mean_pop_percentile_rank": 97.38,
+      "recommend_10k_seconds": 31.51,
+      "ms_per_user": 3.151,
+      "rss_before_mb": 540.71,
+      "peak_rss_mb": 553.46,
+      "tracemalloc_peak_mb": 7.62,
+      "fit_seconds": 28.71,
+      "disk_size_mb": 15.96
+    }
+  ],
+  "pop_buckets_4models": [
+    {
+      "bucket": "soğuk",
+      "n_users": 263,
+      "user_share_pct": 0.35,
+      "min_pop": 0,
+      "max_pop": 0,
+      "pop_hr_at_10": 0.0,
+      "pop_ndcg_at_10": 0.0,
+      "knn_pw0_hr_at_10": 0.0266,
+      "knn_pw0_ndcg_at_10": 0.009,
+      "knn_pw001_hr_at_10": 0.0,
+      "knn_pw001_ndcg_at_10": 0.0,
+      "mf_hr_at_10": 0.0,
+      "mf_ndcg_at_10": 0.0,
+      "pop_hits": 0,
+      "knn_pw0_hits": 7,
+      "knn_pw001_hits": 0,
+      "mf_hits": 0
+    },
+    {
+      "bucket": "kuyruk",
+      "n_users": 25320,
+      "user_share_pct": 33.4,
+      "min_pop": 1,
+      "max_pop": 23,
+      "pop_hr_at_10": 0.001,
+      "pop_ndcg_at_10": 0.0003,
+      "knn_pw0_hr_at_10": 0.2884,
+      "knn_pw0_ndcg_at_10": 0.1917,
+      "knn_pw001_hr_at_10": 0.2231,
+      "knn_pw001_ndcg_at_10": 0.1398,
+      "mf_hr_at_10": 0.4654,
+      "mf_ndcg_at_10": 0.2417,
+      "pop_hits": 26,
+      "knn_pw0_hits": 7302,
+      "knn_pw001_hits": 5649,
+      "mf_hits": 11784
+    },
+    {
+      "bucket": "orta",
+      "n_users": 25114,
+      "user_share_pct": 33.13,
+      "min_pop": 24,
+      "max_pop": 111,
+      "pop_hr_at_10": 0.6558,
+      "pop_ndcg_at_10": 0.2492,
+      "knn_pw0_hr_at_10": 0.5774,
+      "knn_pw0_ndcg_at_10": 0.3904,
+      "knn_pw001_hr_at_10": 0.7088,
+      "knn_pw001_ndcg_at_10": 0.4022,
+      "mf_hr_at_10": 0.7703,
+      "mf_ndcg_at_10": 0.5619,
+      "pop_hits": 16469,
+      "knn_pw0_hits": 14501,
+      "knn_pw001_hits": 17800,
+      "mf_hits": 19346
+    },
+    {
+      "bucket": "baş",
+      "n_users": 25102,
+      "user_share_pct": 33.12,
+      "min_pop": 112,
+      "max_pop": 1901,
+      "pop_hr_at_10": 1.0,
+      "pop_ndcg_at_10": 0.7677,
+      "knn_pw0_hr_at_10": 0.8565,
+      "knn_pw0_ndcg_at_10": 0.6873,
+      "knn_pw001_hr_at_10": 0.9985,
+      "knn_pw001_ndcg_at_10": 0.8216,
+      "mf_hr_at_10": 0.8463,
+      "mf_ndcg_at_10": 0.7127,
+      "pop_hits": 25102,
+      "knn_pw0_hits": 21499,
+      "knn_pw001_hits": 25064,
+      "mf_hits": 21245
+    }
+  ],
+  "cold_item_analysis": {
+    "n_cold_items_total": 84,
+    "n_cf_known_false_items_total": 243,
+    "n_label0_only_items": 159,
+    "n_val_users_with_cold_84_target": 114,
+    "n_val_users_with_cf_known_false_243_target": 263,
+    "mf_cold_84_factor_norm_sum": 0.0,
+    "mf_cold_84_cf_known_true_count": 0,
+    "mf_cold_114_users_hr_at_10": 0.0,
+    "mf_cold_114_users_ndcg_at_10": 0.0,
+    "mf_cold_263_bucket_hr_at_10": 0.0,
+    "mf_cold_263_bucket_ndcg_at_10": 0.0
+  },
+  "timing_and_memory_mf": {
+    "model": "ALS MF (f=32, α=150, it=50)",
+    "n_sample_users": 10000,
+    "total_rec_slots": 100000,
+    "unique_rec_items": 2116,
+    "catalog_cov_25610_pct": 8.2624,
+    "catalog_cov_25367_known_pct": 8.3415,
+    "top100_pop_item_share_pct": 32.168,
+    "mean_pop_percentile_rank": 97.3794,
+    "mean_rec_item_pop": 343.37,
+    "median_rec_item_pop": 245.0,
+    "pool_coverage_pct": 89.7657,
+    "pool_coverage_n": 22989,
+    "elapsed_seconds": 31.5091,
+    "ms_per_user": 3.1509,
+    "rss_before_mb": 540.71,
+    "peak_rss_mb": 553.46,
+    "tracemalloc_peak_mb": 7.62,
+    "single_process_fit_seconds": 28.71,
+    "mf_total_disk_mb": 15.96,
+    "mf_factors_only_disk_mb": 14.69,
+    "itemknn_disk_mb": 20.25,
+    "popularity_disk_mb": 0.1
+  },
+  "new_user_all_models": [
+    {
+      "n_games": 3,
+      "model": "Popularity",
+      "hr_at_10": 0.546,
+      "ndcg_at_10": 0.3335,
+      "pool_cov_at_10_pct": 15.75,
+      "pool_cov_at_10_n": 4034,
+      "elapsed_seconds": 0.05
+    },
+    {
+      "n_games": 3,
+      "model": "Item-kNN (pw=0)",
+      "hr_at_10": 0.5286,
+      "ndcg_at_10": 0.3758,
+      "pool_cov_at_10_pct": 72.75,
+      "pool_cov_at_10_n": 18631,
+      "elapsed_seconds": 5.41
+    },
+    {
+      "n_games": 3,
+      "model": "Item-kNN (pw=0.01)",
+      "hr_at_10": 0.6112,
+      "ndcg_at_10": 0.4133,
+      "pool_cov_at_10_pct": 37.53,
+      "pool_cov_at_10_n": 9612,
+      "elapsed_seconds": 5.55
+    },
+    {
+      "n_games": 3,
+      "model": "MF-ridge",
+      "hr_at_10": 0.6624,
+      "ndcg_at_10": 0.4704,
+      "pool_cov_at_10_pct": 57.31,
+      "pool_cov_at_10_n": 14676,
+      "elapsed_seconds": 4.32
+    },
+    {
+      "n_games": 3,
+      "model": "MF-mean",
+      "hr_at_10": 0.6474,
+      "ndcg_at_10": 0.4389,
+      "pool_cov_at_10_pct": 29.23,
+      "pool_cov_at_10_n": 7487,
+      "elapsed_seconds": 3.3
+    },
+    {
+      "n_games": 4,
+      "model": "Popularity",
+      "hr_at_10": 0.546,
+      "ndcg_at_10": 0.3335,
+      "pool_cov_at_10_pct": 15.75,
+      "pool_cov_at_10_n": 4034,
+      "elapsed_seconds": 0.05
+    },
+    {
+      "n_games": 4,
+      "model": "Item-kNN (pw=0)",
+      "hr_at_10": 0.5688,
+      "ndcg_at_10": 0.4083,
+      "pool_cov_at_10_pct": 70.16,
+      "pool_cov_at_10_n": 17968,
+      "elapsed_seconds": 5.31
+    },
+    {
+      "n_games": 4,
+      "model": "Item-kNN (pw=0.01)",
+      "hr_at_10": 0.628,
+      "ndcg_at_10": 0.4358,
+      "pool_cov_at_10_pct": 40.16,
+      "pool_cov_at_10_n": 10286,
+      "elapsed_seconds": 5.35
+    },
+    {
+      "n_games": 4,
+      "model": "MF-ridge",
+      "hr_at_10": 0.682,
+      "ndcg_at_10": 0.4943,
+      "pool_cov_at_10_pct": 57.43,
+      "pool_cov_at_10_n": 14708,
+      "elapsed_seconds": 4.17
+    },
+    {
+      "n_games": 4,
+      "model": "MF-mean",
+      "hr_at_10": 0.6508,
+      "ndcg_at_10": 0.448,
+      "pool_cov_at_10_pct": 28.68,
+      "pool_cov_at_10_n": 7346,
+      "elapsed_seconds": 3.74
+    },
+    {
+      "n_games": 5,
+      "model": "Popularity",
+      "hr_at_10": 0.546,
+      "ndcg_at_10": 0.3335,
+      "pool_cov_at_10_pct": 15.75,
+      "pool_cov_at_10_n": 4034,
+      "elapsed_seconds": 0.05
+    },
+    {
+      "n_games": 5,
+      "model": "Item-kNN (pw=0)",
+      "hr_at_10": 0.5906,
+      "ndcg_at_10": 0.4246,
+      "pool_cov_at_10_pct": 68.04,
+      "pool_cov_at_10_n": 17425,
+      "elapsed_seconds": 5.09
+    },
+    {
+      "n_games": 5,
+      "model": "Item-kNN (pw=0.01)",
+      "hr_at_10": 0.6386,
+      "ndcg_at_10": 0.4461,
+      "pool_cov_at_10_pct": 42.32,
+      "pool_cov_at_10_n": 10838,
+      "elapsed_seconds": 6.24
+    },
+    {
+      "n_games": 5,
+      "model": "MF-ridge",
+      "hr_at_10": 0.7002,
+      "ndcg_at_10": 0.4992,
+      "pool_cov_at_10_pct": 57.13,
+      "pool_cov_at_10_n": 14632,
+      "elapsed_seconds": 4.5
+    },
+    {
+      "n_games": 5,
+      "model": "MF-mean",
+      "hr_at_10": 0.6532,
+      "ndcg_at_10": 0.4495,
+      "pool_cov_at_10_pct": 27.9,
+      "pool_cov_at_10_n": 7144,
+      "elapsed_seconds": 3.94
+    }
+  ],
+  "new_user_paired_diffs": [
+    {
+      "n_games": 3,
+      "comparison": "MF-ridge vs Item-kNN (pw=0.01)",
+      "diff_hr_at_10": 0.0512,
+      "se_hr_at_10": 0.0074,
+      "z_hr": 6.92,
+      "diff_ndcg_at_10": 0.0571,
+      "se_ndcg_at_10": 0.0053,
+      "z_ndcg": 10.76
+    },
+    {
+      "n_games": 3,
+      "comparison": "MF-ridge vs MF-mean",
+      "diff_hr_at_10": 0.015,
+      "se_hr_at_10": 0.006,
+      "z_hr": 2.49,
+      "diff_ndcg_at_10": 0.0314,
+      "se_ndcg_at_10": 0.0037,
+      "z_ndcg": 8.45
+    },
+    {
+      "n_games": 4,
+      "comparison": "MF-ridge vs Item-kNN (pw=0.01)",
+      "diff_hr_at_10": 0.054,
+      "se_hr_at_10": 0.0073,
+      "z_hr": 7.4,
+      "diff_ndcg_at_10": 0.0585,
+      "se_ndcg_at_10": 0.0052,
+      "z_ndcg": 11.22
+    },
+    {
+      "n_games": 4,
+      "comparison": "MF-ridge vs MF-mean",
+      "diff_hr_at_10": 0.0312,
+      "se_hr_at_10": 0.0061,
+      "z_hr": 5.1,
+      "diff_ndcg_at_10": 0.0463,
+      "se_ndcg_at_10": 0.0039,
+      "z_ndcg": 12.02
+    },
+    {
+      "n_games": 5,
+      "comparison": "MF-ridge vs Item-kNN (pw=0.01)",
+      "diff_hr_at_10": 0.0616,
+      "se_hr_at_10": 0.0071,
+      "z_hr": 8.74,
+      "diff_ndcg_at_10": 0.0531,
+      "se_ndcg_at_10": 0.0051,
+      "z_ndcg": 10.46
+    },
+    {
+      "n_games": 5,
+      "comparison": "MF-ridge vs MF-mean",
+      "diff_hr_at_10": 0.047,
+      "se_hr_at_10": 0.006,
+      "z_hr": 7.77,
+      "diff_ndcg_at_10": 0.0497,
+      "se_ndcg_at_10": 0.0038,
+      "z_ndcg": 13.02
+    }
+  ],
+  "example_users": [
+    {
+      "label": "Kullanıcı 1 (Düşük Aktivite, =3)",
+      "user_idx": 12968,
+      "total_train_interactions": 3,
+      "n_train_positives": 2,
+      "val_target": {
+        "item_idx": 20424,
+        "title": "JAMSWALL PS4 Controller Wireless, Gamepad Compatible with Playstation 4/Pro",
+        "sub_category": "PlayStation 4",
+        "categories": "Video Games, PlayStation 4, Accessories, Remotes",
+        "store": "JAMSWALL",
+        "train_pos_pop": 3
+      },
+      "val_target_rank_in_pool_mf": 68,
+      "val_target_rank_in_pool_knn001": 90,
+      "liked_items": [
+        {
+          "item_idx": 6464,
+          "title": "Pokemon SoulSilver Version",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Games",
+          "store": "Nintendo",
+          "train_pos_pop": 86
+        },
+        {
+          "item_idx": 10848,
+          "title": "Nintendo Pokémon X & Y Limited Edition 3 DS XL (Red)",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo 3DS & 2DS, Consoles",
+          "store": "Nintendo",
+          "train_pos_pop": 16
+        }
+      ],
+      "mf_top10_live": [
+        {
+          "item_idx": 10886,
+          "title": "Pokémon X",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo 3DS & 2DS",
+          "store": "Nintendo",
+          "train_pos_pop": 319,
+          "raw_score": 0.6103
+        },
+        {
+          "item_idx": 12512,
+          "title": "Pokémon Alpha Sapphire - Nintendo 3DS",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo 3DS & 2DS, Games",
+          "store": "Nintendo",
+          "train_pos_pop": 418,
+          "raw_score": 0.5679
+        },
+        {
+          "item_idx": 9396,
+          "title": "Pokémon Black Version 2",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Games",
+          "store": "Nintendo",
+          "train_pos_pop": 134,
+          "raw_score": 0.5672
+        },
+        {
+          "item_idx": 10889,
+          "title": "Pokémon Y",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo 3DS & 2DS, Games",
+          "store": "Nintendo",
+          "train_pos_pop": 277,
+          "raw_score": 0.5444
+        },
+        {
+          "item_idx": 9389,
+          "title": "Pokemon White Version 2 - Nintendo DS",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Games",
+          "store": "Nintendo",
+          "train_pos_pop": 149,
+          "raw_score": 0.5426
+        },
+        {
+          "item_idx": 7911,
+          "title": "The Legend of Zelda: Ocarina of Time 3D",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo 3DS & 2DS",
+          "store": "Nintendo",
+          "train_pos_pop": 329,
+          "raw_score": 0.5145
+        },
+        {
+          "item_idx": 5566,
+          "title": "Pokemon Platinum",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Games",
+          "store": "Nintendo",
+          "train_pos_pop": 87,
+          "raw_score": 0.4708
+        },
+        {
+          "item_idx": 7576,
+          "title": "Pokemon White Version",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Games",
+          "store": "Nintendo",
+          "train_pos_pop": 69,
+          "raw_score": 0.4619
+        },
+        {
+          "item_idx": 6463,
+          "title": "Pokemon HeartGold Version",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Games",
+          "store": "Nintendo",
+          "train_pos_pop": 76,
+          "raw_score": 0.4584
+        },
+        {
+          "item_idx": 15271,
+          "title": "Pokémon Sun and Pokémon Moon Steelbook Dual Pack – Nintendo 3DS (Amazon Exc",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo 3DS & 2DS, Accessories",
+          "store": "Nintendo",
+          "train_pos_pop": 477,
+          "raw_score": 0.4536
+        }
+      ],
+      "knn001_top10_live": [
+        {
+          "item_idx": 7577,
+          "title": "Pokémon - Black Version",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Games",
+          "store": "Nintendo",
+          "train_pos_pop": 91,
+          "raw_score": 0.0108
+        },
+        {
+          "item_idx": 15741,
+          "title": "amFilm Tempered Glass Screen Protector for Nintendo Switch 2017 (2-Pack)",
+          "sub_category": "Nintendo Switch",
+          "categories": "Video Games, Nintendo Switch, Accessories, Faceplates, Protectors & Skins, Scree",
+          "store": "amFilm",
+          "train_pos_pop": 1901,
+          "raw_score": 0.01
+        },
+        {
+          "item_idx": 6463,
+          "title": "Pokemon HeartGold Version",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Games",
+          "store": "Nintendo",
+          "train_pos_pop": 76,
+          "raw_score": 0.0096
+        },
+        {
+          "item_idx": 5566,
+          "title": "Pokemon Platinum",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Games",
+          "store": "Nintendo",
+          "train_pos_pop": 87,
+          "raw_score": 0.009
+        },
+        {
+          "item_idx": 8360,
+          "title": "Skyrim VR - PlayStation 4",
+          "sub_category": "PlayStation 4",
+          "categories": "Video Games, PlayStation 4, Games",
+          "store": "Bethesda",
+          "train_pos_pop": 1586,
+          "raw_score": 0.0084
+        },
+        {
+          "item_idx": 10809,
+          "title": "Grand Theft Auto V: Premium Edition - Xbox One [Digital Code]",
+          "sub_category": "Xbox One",
+          "categories": "Video Games, Xbox One, Games",
+          "store": "Rockstar Games",
+          "train_pos_pop": 1550,
+          "raw_score": 0.0083
+        },
+        {
+          "item_idx": 10096,
+          "title": "PlayStation 4 500GB Console [Old Model][Discontinued]",
+          "sub_category": "Video Games",
+          "categories": "Video Games",
+          "store": "PlayStation",
+          "train_pos_pop": 1342,
+          "raw_score": 0.0071
+        },
+        {
+          "item_idx": 5926,
+          "title": "Xbox Live Gold: 1 Month Membership [Digital Code]",
+          "sub_category": "Xbox Digital Content",
+          "categories": "Video Games, Xbox Digital Content, Subscription Cards",
+          "store": "Xbox",
+          "train_pos_pop": 1299,
+          "raw_score": 0.0069
+        },
+        {
+          "item_idx": 8160,
+          "title": "PlayStation Plus: 12 Month Membership [Digital Code]",
+          "sub_category": "Online Game Services",
+          "categories": "Video Games, Online Game Services, PlayStation Network, Subscriptions",
+          "store": "PlayStation",
+          "train_pos_pop": 1199,
+          "raw_score": 0.0064
+        },
+        {
+          "item_idx": 10947,
+          "title": "Assassin's Creed IV Black Flag - PC",
+          "sub_category": "PC",
+          "categories": "Video Games, PC, Games",
+          "store": "Ubisoft",
+          "train_pos_pop": 1166,
+          "raw_score": 0.0062
+        }
+      ]
+    },
+    {
+      "label": "Kullanıcı 2 (Orta Aktivite, 4-6)",
+      "user_idx": 76119,
+      "total_train_interactions": 6,
+      "n_train_positives": 6,
+      "val_target": {
+        "item_idx": 21815,
+        "title": "Just Dance 2021 Xbox Series X|S, Xbox One",
+        "sub_category": "Xbox One",
+        "categories": "Video Games, Xbox One, Games",
+        "store": "Ubisoft",
+        "train_pos_pop": 42
+      },
+      "val_target_rank_in_pool_mf": 15,
+      "val_target_rank_in_pool_knn001": 16,
+      "liked_items": [
+        {
+          "item_idx": 13165,
+          "title": "Razer Firefly Chroma Cloth Gaming Mouse Pad: Customizable Chroma RGB Lighti",
+          "sub_category": "PC",
+          "categories": "Video Games, PC, Accessories, Gaming Mice",
+          "store": "Razer",
+          "train_pos_pop": 94
+        },
+        {
+          "item_idx": 15760,
+          "title": "Nintendo Joy-Con (L/R) - Gray",
+          "sub_category": "Nintendo Switch",
+          "categories": "Video Games, Nintendo Switch, Accessories, Controllers",
+          "store": "Nintendo",
+          "train_pos_pop": 125
+        },
+        {
+          "item_idx": 16594,
+          "title": "Razer Lancehead - Wireless Gaming Mouse: 16, 000 DPI Laser Sensor - Chroma ",
+          "sub_category": "PC",
+          "categories": "Video Games, PC, Accessories, Gaming Mice",
+          "store": "Razer",
+          "train_pos_pop": 4
+        },
+        {
+          "item_idx": 17666,
+          "title": "ivoler [3 Pack Screen Protector Tempered Glass for Nintendo Switch, Transpa",
+          "sub_category": "Nintendo Switch",
+          "categories": "Video Games, Nintendo Switch, Accessories, Faceplates, Protectors & Skins, Scree",
+          "store": "ivoler",
+          "train_pos_pop": 176
+        },
+        {
+          "item_idx": 18676,
+          "title": "SanDisk 128GB microSDXC-Card, Licensed for Nintendo-Switch - SDSQXAO-128G-G",
+          "sub_category": "Nintendo Switch",
+          "categories": "Video Games, Nintendo Switch, Accessories",
+          "store": "SanDisk",
+          "train_pos_pop": 579
+        },
+        {
+          "item_idx": 20249,
+          "title": "JOTO [3 Pack] Screen Protector for Nintendo Switch Lite, Tempered Glass Scr",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo 3DS & 2DS, Accessories",
+          "store": "JOTO",
+          "train_pos_pop": 5
+        }
+      ],
+      "mf_top10_live": [
+        {
+          "item_idx": 15743,
+          "title": "Nintendo Switch Pro Controller",
+          "sub_category": "Nintendo Switch",
+          "categories": "Video Games, Nintendo Switch, Accessories, Controllers",
+          "store": "Nintendo",
+          "train_pos_pop": 900,
+          "raw_score": 1.0658
+        },
+        {
+          "item_idx": 15741,
+          "title": "amFilm Tempered Glass Screen Protector for Nintendo Switch 2017 (2-Pack)",
+          "sub_category": "Nintendo Switch",
+          "categories": "Video Games, Nintendo Switch, Accessories, Faceplates, Protectors & Skins, Scree",
+          "store": "amFilm",
+          "train_pos_pop": 1901,
+          "raw_score": 1.0643
+        },
+        {
+          "item_idx": 15904,
+          "title": "Orzly Carrying case for Nintendo Switch OLED and Switch Console - Purple Pr",
+          "sub_category": "Nintendo Switch",
+          "categories": "Video Games, Nintendo Switch, Accessories, Cases & Storage",
+          "store": "Orzly",
+          "train_pos_pop": 401,
+          "raw_score": 0.9758
+        },
+        {
+          "item_idx": 18552,
+          "title": "Super Smash Bros. Ultimate: Challenger Pack 2 - [Switch Digital Code]",
+          "sub_category": "Nintendo Switch",
+          "categories": "Video Games, Nintendo Switch, Games",
+          "store": "Nintendo",
+          "train_pos_pop": 545,
+          "raw_score": 0.9521
+        },
+        {
+          "item_idx": 16015,
+          "title": "Mario Kart 8 Deluxe – Booster Course Pass - Nintendo Switch [Digital Code]",
+          "sub_category": "Game Genre of the Month",
+          "categories": "Video Games, Game Genre of the Month",
+          "store": "Nintendo",
+          "train_pos_pop": 673,
+          "raw_score": 0.9488
+        },
+        {
+          "item_idx": 15726,
+          "title": "The Legend of Zelda: Breath of the Wild Master Edition - Nintendo Switch",
+          "sub_category": "Nintendo Switch",
+          "categories": "Video Games, Nintendo Switch, Consoles",
+          "store": "Nintendo",
+          "train_pos_pop": 1018,
+          "raw_score": 0.8997
+        },
+        {
+          "item_idx": 15804,
+          "title": "Nintendo Joy-Con (R) - Neon Red - Nintendo Switch",
+          "sub_category": "Nintendo Switch",
+          "categories": "Video Games, Nintendo Switch, Accessories, Controllers",
+          "store": "Nintendo",
+          "train_pos_pop": 344,
+          "raw_score": 0.8757
+        },
+        {
+          "item_idx": 15790,
+          "title": "HORI Compact Playstand for Nintendo Switch Officially Licensed by Nintendo,",
+          "sub_category": "Nintendo Switch",
+          "categories": "Video Games, Nintendo Switch, Accessories, Mounts, Brackets & Stands",
+          "store": "HORI",
+          "train_pos_pop": 310,
+          "raw_score": 0.8726
+        },
+        {
+          "item_idx": 16007,
+          "title": "PowerA Nintendo Switch Car Charger,USB - Nintendo Switch",
+          "sub_category": "Nintendo Switch",
+          "categories": "Video Games, Nintendo Switch, Accessories, Batteries & Chargers",
+          "store": "PowerA",
+          "train_pos_pop": 234,
+          "raw_score": 0.8475
+        },
+        {
+          "item_idx": 16524,
+          "title": "Amazon Basics Carrying Case for Nintendo Switch - Black",
+          "sub_category": "Nintendo Switch",
+          "categories": "Video Games, Nintendo Switch, Accessories, Cases & Storage",
+          "store": "Amazon Basics",
+          "train_pos_pop": 384,
+          "raw_score": 0.8248
+        }
+      ],
+      "knn001_top10_live": [
+        {
+          "item_idx": 15741,
+          "title": "amFilm Tempered Glass Screen Protector for Nintendo Switch 2017 (2-Pack)",
+          "sub_category": "Nintendo Switch",
+          "categories": "Video Games, Nintendo Switch, Accessories, Faceplates, Protectors & Skins, Scree",
+          "store": "amFilm",
+          "train_pos_pop": 1901,
+          "raw_score": 0.0337
+        },
+        {
+          "item_idx": 15743,
+          "title": "Nintendo Switch Pro Controller",
+          "sub_category": "Nintendo Switch",
+          "categories": "Video Games, Nintendo Switch, Accessories, Controllers",
+          "store": "Nintendo",
+          "train_pos_pop": 900,
+          "raw_score": 0.0289
+        },
+        {
+          "item_idx": 18552,
+          "title": "Super Smash Bros. Ultimate: Challenger Pack 2 - [Switch Digital Code]",
+          "sub_category": "Nintendo Switch",
+          "categories": "Video Games, Nintendo Switch, Games",
+          "store": "Nintendo",
+          "train_pos_pop": 545,
+          "raw_score": 0.0243
+        },
+        {
+          "item_idx": 15726,
+          "title": "The Legend of Zelda: Breath of the Wild Master Edition - Nintendo Switch",
+          "sub_category": "Nintendo Switch",
+          "categories": "Video Games, Nintendo Switch, Consoles",
+          "store": "Nintendo",
+          "train_pos_pop": 1018,
+          "raw_score": 0.023
+        },
+        {
+          "item_idx": 16007,
+          "title": "PowerA Nintendo Switch Car Charger,USB - Nintendo Switch",
+          "sub_category": "Nintendo Switch",
+          "categories": "Video Games, Nintendo Switch, Accessories, Batteries & Chargers",
+          "store": "PowerA",
+          "train_pos_pop": 234,
+          "raw_score": 0.0201
+        },
+        {
+          "item_idx": 16015,
+          "title": "Mario Kart 8 Deluxe – Booster Course Pass - Nintendo Switch [Digital Code]",
+          "sub_category": "Game Genre of the Month",
+          "categories": "Video Games, Game Genre of the Month",
+          "store": "Nintendo",
+          "train_pos_pop": 673,
+          "raw_score": 0.0191
+        },
+        {
+          "item_idx": 13387,
+          "title": "Razer Mamba Tournament Edition: 16,000 Adjustable DPI - Ergonomic Form Fact",
+          "sub_category": "PC",
+          "categories": "Video Games, PC, Accessories, Gaming Mice",
+          "store": "Razer",
+          "train_pos_pop": 55,
+          "raw_score": 0.0154
+        },
+        {
+          "item_idx": 16846,
+          "title": "Super Mario Odyssey - Nintendo Switch",
+          "sub_category": "Nintendo Switch",
+          "categories": "Video Games, Nintendo Switch, Games",
+          "store": "Nintendo",
+          "train_pos_pop": 687,
+          "raw_score": 0.0147
+        },
+        {
+          "item_idx": 15804,
+          "title": "Nintendo Joy-Con (R) - Neon Red - Nintendo Switch",
+          "sub_category": "Nintendo Switch",
+          "categories": "Video Games, Nintendo Switch, Accessories, Controllers",
+          "store": "Nintendo",
+          "train_pos_pop": 344,
+          "raw_score": 0.0134
+        },
+        {
+          "item_idx": 15904,
+          "title": "Orzly Carrying case for Nintendo Switch OLED and Switch Console - Purple Pr",
+          "sub_category": "Nintendo Switch",
+          "categories": "Video Games, Nintendo Switch, Accessories, Cases & Storage",
+          "store": "Orzly",
+          "train_pos_pop": 401,
+          "raw_score": 0.0125
+        }
+      ]
+    },
+    {
+      "label": "Kullanıcı 3 (Orta Aktivite, Kuyruk Hedefli)",
+      "user_idx": 74913,
+      "total_train_interactions": 4,
+      "n_train_positives": 4,
+      "val_target": {
+        "item_idx": 10491,
+        "title": "Flintstones: The Rescue of Dino and Hoppy - Nintendo NES",
+        "sub_category": "Legacy Systems",
+        "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo NES, Games",
+        "store": "Taito Video Games",
+        "train_pos_pop": 4
+      },
+      "val_target_rank_in_pool_mf": 12,
+      "val_target_rank_in_pool_knn001": 84,
+      "liked_items": [
+        {
+          "item_idx": 1106,
+          "title": "Ninja Gaiden III - Nintendo NES",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo NES, Games",
+          "store": "Tecmo",
+          "train_pos_pop": 5
+        },
+        {
+          "item_idx": 4966,
+          "title": "Rygar",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo NES, Games",
+          "store": "Tecmo",
+          "train_pos_pop": 8
+        },
+        {
+          "item_idx": 5072,
+          "title": "Game Genie Video Game Enhancer",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo NES",
+          "store": "Camerica",
+          "train_pos_pop": 29
+        },
+        {
+          "item_idx": 5672,
+          "title": "Fester's Quest",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo NES, Games",
+          "store": "Sunsoft",
+          "train_pos_pop": 10
+        }
+      ],
+      "mf_top10_live": [
+        {
+          "item_idx": 5264,
+          "title": "Retro-Bit Retro Duo 2 in 1 Console System - for Original NES/SNES, & Super ",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo NES, Consoles",
+          "store": "Retro-Bit",
+          "train_pos_pop": 100,
+          "raw_score": 0.7148
+        },
+        {
+          "item_idx": 10056,
+          "title": "Security Bit Steel SET 3.8mm + 4.5mm Security Bit Screwdriver Tool (7cm Len",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Super Nintendo, Accessories",
+          "store": "Security Bit",
+          "train_pos_pop": 77,
+          "raw_score": 0.6055
+        },
+        {
+          "item_idx": 7763,
+          "title": "NES Retro Entertainment System(Black/Red)",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo NES, Consoles",
+          "store": "Retro-Bit",
+          "train_pos_pop": 44,
+          "raw_score": 0.5974
+        },
+        {
+          "item_idx": 8236,
+          "title": "Generic (2x) TWO - Super Nintendo SNES Controller Pads 3rd Party [Pack of 2",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Super Nintendo, Accessories",
+          "store": "Funcilit",
+          "train_pos_pop": 61,
+          "raw_score": 0.59
+        },
+        {
+          "item_idx": 4810,
+          "title": "Super Mario Bros. / Duck Hunt",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo NES, Games",
+          "store": "Nintendo",
+          "train_pos_pop": 61,
+          "raw_score": 0.5754
+        },
+        {
+          "item_idx": 940,
+          "title": "Super Mario Bros. 3",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo NES, Games",
+          "store": "Nintendo",
+          "train_pos_pop": 95,
+          "raw_score": 0.5719
+        },
+        {
+          "item_idx": 11393,
+          "title": "Hyperkin \"GN6\" Premium Controller for Genesis",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Sega Systems, Sega Genesis, Consoles",
+          "store": "Hyperkin",
+          "train_pos_pop": 80,
+          "raw_score": 0.5635
+        },
+        {
+          "item_idx": 661,
+          "title": "Nintendo Entertainment System Control Deck",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo NES, Consoles",
+          "store": "Nintendo",
+          "train_pos_pop": 55,
+          "raw_score": 0.5517
+        },
+        {
+          "item_idx": 16707,
+          "title": "Super NES Classic",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo NES, Games",
+          "store": "Nintendo",
+          "train_pos_pop": 187,
+          "raw_score": 0.5472
+        },
+        {
+          "item_idx": 1501,
+          "title": "Super Mario Bros. 2",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo NES, Games",
+          "store": "Nintendo",
+          "train_pos_pop": 64,
+          "raw_score": 0.5469
+        }
+      ],
+      "knn001_top10_live": [
+        {
+          "item_idx": 3261,
+          "title": "Blaster Master",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo NES, Games",
+          "store": "Sunsoft",
+          "train_pos_pop": 14,
+          "raw_score": 0.0123
+        },
+        {
+          "item_idx": 3625,
+          "title": "King of Dragons",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Super Nintendo, Games",
+          "store": "Capcom",
+          "train_pos_pop": 4,
+          "raw_score": 0.0107
+        },
+        {
+          "item_idx": 5743,
+          "title": "Game Genie",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Game Boy Systems, Game Boy, Games",
+          "store": "Galoob Toys",
+          "train_pos_pop": 8,
+          "raw_score": 0.0101
+        },
+        {
+          "item_idx": 9526,
+          "title": "Milon's Secret Castle",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo NES, Games",
+          "store": "HUDSON SOFT",
+          "train_pos_pop": 4,
+          "raw_score": 0.0101
+        },
+        {
+          "item_idx": 15741,
+          "title": "amFilm Tempered Glass Screen Protector for Nintendo Switch 2017 (2-Pack)",
+          "sub_category": "Nintendo Switch",
+          "categories": "Video Games, Nintendo Switch, Accessories, Faceplates, Protectors & Skins, Scree",
+          "store": "amFilm",
+          "train_pos_pop": 1901,
+          "raw_score": 0.01
+        },
+        {
+          "item_idx": 861,
+          "title": "Castlevania III: Dracula's Curse",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo NES, Games",
+          "store": "Konami",
+          "train_pos_pop": 21,
+          "raw_score": 0.0092
+        },
+        {
+          "item_idx": 5565,
+          "title": "The Lone Ranger - Nintendo NES",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo NES, Games",
+          "store": "Konami",
+          "train_pos_pop": 5,
+          "raw_score": 0.0091
+        },
+        {
+          "item_idx": 5074,
+          "title": "NES Advantage Joystick",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo NES, Accessories",
+          "store": "Nintendo",
+          "train_pos_pop": 13,
+          "raw_score": 0.009
+        },
+        {
+          "item_idx": 8360,
+          "title": "Skyrim VR - PlayStation 4",
+          "sub_category": "PlayStation 4",
+          "categories": "Video Games, PlayStation 4, Games",
+          "store": "Bethesda",
+          "train_pos_pop": 1586,
+          "raw_score": 0.0084
+        },
+        {
+          "item_idx": 1167,
+          "title": "Mega Man 3",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo NES, Games",
+          "store": "Capcom",
+          "train_pos_pop": 18,
+          "raw_score": 0.0082
+        }
+      ]
+    },
+    {
+      "label": "Kullanıcı 4 (Yüksek Aktivite, 7+)",
+      "user_idx": 37040,
+      "total_train_interactions": 7,
+      "n_train_positives": 7,
+      "val_target": {
+        "item_idx": 8960,
+        "title": "Titanic Mystery - Nintendo Wii",
+        "sub_category": "Legacy Systems",
+        "categories": "Video Games, Legacy Systems, Nintendo Systems, Wii, Games",
+        "store": "O-Games",
+        "train_pos_pop": 7
+      },
+      "val_target_rank_in_pool_mf": 6,
+      "val_target_rank_in_pool_knn001": 52,
+      "liked_items": [
+        {
+          "item_idx": 4631,
+          "title": "Word Jong - Nintendo DS",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Games",
+          "store": "Destineer",
+          "train_pos_pop": 21
+        },
+        {
+          "item_idx": 5367,
+          "title": "Slingo Quest - Nintendo DS",
+          "sub_category": "Value Games Under $20",
+          "categories": "Video Games, Value Games Under $20",
+          "store": "Mumbo Jumbo",
+          "train_pos_pop": 8
+        },
+        {
+          "item_idx": 6753,
+          "title": "Foto Frenzy: Spot the Difference",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Games",
+          "store": "Storm City Entertainment",
+          "train_pos_pop": 6
+        },
+        {
+          "item_idx": 6930,
+          "title": "Deal or No Deal: Special Edition",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS",
+          "store": "Zoo Games",
+          "train_pos_pop": 3
+        },
+        {
+          "item_idx": 7198,
+          "title": "Who Wants to be a Millionaire? - Nintendo DS",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Games",
+          "store": "Ubisoft",
+          "train_pos_pop": 4
+        },
+        {
+          "item_idx": 7231,
+          "title": "Heathcliff: Frantic Foto Comic Edition - Nintendo DS",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Games",
+          "store": "Storm City Entertainment",
+          "train_pos_pop": 2
+        },
+        {
+          "item_idx": 11922,
+          "title": "Nerf Armor, Blue - Nintendo 2DS",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo 3DS & 2DS, Accessories, ",
+          "store": "PDP",
+          "train_pos_pop": 4
+        }
+      ],
+      "mf_top10_live": [
+        {
+          "item_idx": 6004,
+          "title": "Plants vs. Zombies: Game of the Year Edition",
+          "sub_category": "PC",
+          "categories": "Video Games, PC",
+          "store": "PopCap Games",
+          "train_pos_pop": 145,
+          "raw_score": 0.8211
+        },
+        {
+          "item_idx": 8389,
+          "title": "Bejeweled 3 (with Zuma & Feeding Frenzy 2) - Playstation 3",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, PlayStation Systems, PlayStation 3, Games",
+          "store": "PopCap Games",
+          "train_pos_pop": 80,
+          "raw_score": 0.73
+        },
+        {
+          "item_idx": 3403,
+          "title": "New Super Mario Bros",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Games",
+          "store": "Nintendo",
+          "train_pos_pop": 266,
+          "raw_score": 0.7231
+        },
+        {
+          "item_idx": 3432,
+          "title": "Nintendo DS Lite Cobalt / Black",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Consoles",
+          "store": "Nintendo",
+          "train_pos_pop": 308,
+          "raw_score": 0.6697
+        },
+        {
+          "item_idx": 5877,
+          "title": "Insten Gen 4 Piece Stylus Pen Set Multi Color for Nintendo DS Lite",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Accessories, Stylus ",
+          "store": "INSTEN",
+          "train_pos_pop": 90,
+          "raw_score": 0.6605
+        },
+        {
+          "item_idx": 5601,
+          "title": "Nintendo DSi Bundle - Metallic Blue",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Consoles",
+          "store": "Nintendo",
+          "train_pos_pop": 184,
+          "raw_score": 0.6575
+        },
+        {
+          "item_idx": 3113,
+          "title": "Mario Kart DS",
+          "sub_category": "Kids and Family",
+          "categories": "Video Games, Kids and Family",
+          "store": "Nintendo",
+          "train_pos_pop": 176,
+          "raw_score": 0.6442
+        },
+        {
+          "item_idx": 4604,
+          "title": "Professor Layton and the Curious Village - Nintendo DS",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Games",
+          "store": "Nintendo",
+          "train_pos_pop": 82,
+          "raw_score": 0.6309
+        },
+        {
+          "item_idx": 5895,
+          "title": "Professor Layton and the Diabolical Box",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Games",
+          "store": "Nintendo",
+          "train_pos_pop": 54,
+          "raw_score": 0.6254
+        },
+        {
+          "item_idx": 3535,
+          "title": "Cooking Mama - Nintendo DS",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Games",
+          "store": "Majesco",
+          "train_pos_pop": 58,
+          "raw_score": 0.6178
+        }
+      ],
+      "knn001_top10_live": [
+        {
+          "item_idx": 4580,
+          "title": "Mah Jong Quest Expeditions",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Games",
+          "store": "ACTIVISION",
+          "train_pos_pop": 15,
+          "raw_score": 0.0225
+        },
+        {
+          "item_idx": 4781,
+          "title": "Crosswords DS",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS",
+          "store": "Nintendo",
+          "train_pos_pop": 27,
+          "raw_score": 0.01
+        },
+        {
+          "item_idx": 15741,
+          "title": "amFilm Tempered Glass Screen Protector for Nintendo Switch 2017 (2-Pack)",
+          "sub_category": "Nintendo Switch",
+          "categories": "Video Games, Nintendo Switch, Accessories, Faceplates, Protectors & Skins, Scree",
+          "store": "amFilm",
+          "train_pos_pop": 1901,
+          "raw_score": 0.01
+        },
+        {
+          "item_idx": 4327,
+          "title": "Nintendo DS Lite Play Stand",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Accessories",
+          "store": "HORI",
+          "train_pos_pop": 4,
+          "raw_score": 0.0098
+        },
+        {
+          "item_idx": 4097,
+          "title": "Touchmaster - Nintendo DS",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Games",
+          "store": "WB Games",
+          "train_pos_pop": 31,
+          "raw_score": 0.0094
+        },
+        {
+          "item_idx": 8360,
+          "title": "Skyrim VR - PlayStation 4",
+          "sub_category": "PlayStation 4",
+          "categories": "Video Games, PlayStation 4, Games",
+          "store": "Bethesda",
+          "train_pos_pop": 1586,
+          "raw_score": 0.0084
+        },
+        {
+          "item_idx": 10809,
+          "title": "Grand Theft Auto V: Premium Edition - Xbox One [Digital Code]",
+          "sub_category": "Xbox One",
+          "categories": "Video Games, Xbox One, Games",
+          "store": "Rockstar Games",
+          "train_pos_pop": 1550,
+          "raw_score": 0.0082
+        },
+        {
+          "item_idx": 5451,
+          "title": "Jumble Madness - Nintendo DS",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Games",
+          "store": "Destineer",
+          "train_pos_pop": 5,
+          "raw_score": 0.008
+        },
+        {
+          "item_idx": 4956,
+          "title": "Wordmaster - Nintendo DS",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS",
+          "store": "Destination Software",
+          "train_pos_pop": 6,
+          "raw_score": 0.0078
+        },
+        {
+          "item_idx": 5107,
+          "title": "Margot's Word Brain - Nintendo DS",
+          "sub_category": "Value Games Under $20",
+          "categories": "Video Games, Value Games Under $20",
+          "store": "Destination Software",
+          "train_pos_pop": 1,
+          "raw_score": 0.0075
+        }
+      ]
+    },
+    {
+      "label": "Kullanıcı 5 (Yüksek Aktivite, 7+)",
+      "user_idx": 36491,
+      "total_train_interactions": 21,
+      "n_train_positives": 20,
+      "val_target": {
+        "item_idx": 16022,
+        "title": "yueton 10pcs Universal Replacement Black Hand Wrist Strap Wristlet Wristban",
+        "sub_category": "Legacy Systems",
+        "categories": "Video Games, Legacy Systems, Nintendo Systems, Wii, Accessories, Accessory Kits",
+        "store": "yueton",
+        "train_pos_pop": 7
+      },
+      "val_target_rank_in_pool_mf": 11,
+      "val_target_rank_in_pool_knn001": 19,
+      "liked_items": [
+        {
+          "item_idx": 5908,
+          "title": "Nyko Charge Base - 2 Port Controller Charger with 2 USB Charge Adapters for",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, PlayStation Systems, PlayStation 3, Accessories, Ba",
+          "store": "Nyko",
+          "train_pos_pop": 623
+        },
+        {
+          "item_idx": 6903,
+          "title": "Playstation 3 Move Motion Controller",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, PlayStation Systems, PlayStation 3, Accessories, Co",
+          "store": "PlayStation",
+          "train_pos_pop": 285
+        },
+        {
+          "item_idx": 8800,
+          "title": "CTA Digital PS Vita Hand Grip",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, PlayStation Systems, PlayStation Vita, Accessories,",
+          "store": "CTA Digital",
+          "train_pos_pop": 112
+        },
+        {
+          "item_idx": 9585,
+          "title": "Persona 4 Golden - PlayStation Vita",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, PlayStation Systems, PlayStation Vita, Games",
+          "store": "Atlus",
+          "train_pos_pop": 300
+        },
+        {
+          "item_idx": 11013,
+          "title": "PowerA Charging Stand for PlayStation 4",
+          "sub_category": "PlayStation 4",
+          "categories": "Video Games, PlayStation 4, PlayStation VR Hardware, Accessories",
+          "store": "PowerA",
+          "train_pos_pop": 525
+        },
+        {
+          "item_idx": 11381,
+          "title": "Tomb Raider: Definitive Edition - Xbox One",
+          "sub_category": "Xbox One",
+          "categories": "Video Games, Xbox One, Games",
+          "store": "Square Enix",
+          "train_pos_pop": 510
+        },
+        {
+          "item_idx": 12253,
+          "title": "Disney Infinity: Marvel Super Heroes (2.0 Edition) - Marvel's The Avengers ",
+          "sub_category": "Disney Interactive Studios",
+          "categories": "Video Games, Disney Interactive Studios",
+          "store": "Disney Infinity",
+          "train_pos_pop": 129
+        },
+        {
+          "item_idx": 12628,
+          "title": "PowerA Voroar DualShock 4 Dual Charger with FREE USB Cable",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, PlayStation Systems, PlayStation, Accessories",
+          "store": "PowerA",
+          "train_pos_pop": 92
+        },
+        {
+          "item_idx": 13224,
+          "title": "Batman: Arkham Knight - Limited Edition - Xbox One",
+          "sub_category": "Xbox One",
+          "categories": "Video Games, Xbox One, Games",
+          "store": "WB Games",
+          "train_pos_pop": 67
+        },
+        {
+          "item_idx": 13436,
+          "title": "Disney Infinity 3.0 Edition: Pixar's The Good Dinosaur Power Disc Pack",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, PlayStation Systems",
+          "store": "Disney Infinity",
+          "train_pos_pop": 151
+        }
+      ],
+      "mf_top10_live": [
+        {
+          "item_idx": 12343,
+          "title": "PlayStation TV DualShock 3 Bundle",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, PlayStation Systems, PlayStation Vita",
+          "store": "PlayStation",
+          "train_pos_pop": 242,
+          "raw_score": 1.3853
+        },
+        {
+          "item_idx": 11029,
+          "title": "PlayStation Vita Memory Card 64GB (PCH-Z641J)",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, PlayStation Systems, PlayStation Vita, Accessories,",
+          "store": "Sony",
+          "train_pos_pop": 292,
+          "raw_score": 1.3008
+        },
+        {
+          "item_idx": 11440,
+          "title": "Gold Wireless Stereo Headset - PlayStation 4",
+          "sub_category": "PlayStation 4",
+          "categories": "Video Games, PlayStation 4, Accessories, Headsets",
+          "store": "Sony",
+          "train_pos_pop": 528,
+          "raw_score": 1.2916
+        },
+        {
+          "item_idx": 15174,
+          "title": "Collective Minds PS4 VR Showcase Stand Plus - PlayStation 4",
+          "sub_category": "PlayStation 4",
+          "categories": "Video Games, PlayStation 4",
+          "store": "Collective Minds",
+          "train_pos_pop": 130,
+          "raw_score": 1.2214
+        },
+        {
+          "item_idx": 12722,
+          "title": "Sony PlayStation Vita WiFi",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, PlayStation Systems, PlayStation Vita, Consoles",
+          "store": "Sony",
+          "train_pos_pop": 181,
+          "raw_score": 1.2052
+        },
+        {
+          "item_idx": 8958,
+          "title": "PS Vita Portable Charger",
+          "sub_category": "Kids and Family",
+          "categories": "Video Games, Kids and Family",
+          "store": "PlayStation",
+          "train_pos_pop": 101,
+          "raw_score": 1.1518
+        },
+        {
+          "item_idx": 11761,
+          "title": "Nyko Power Grip for PS Vita (PCH-2000)",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, PlayStation Systems, PlayStation Vita, Accessories",
+          "store": "Nyko",
+          "train_pos_pop": 88,
+          "raw_score": 1.1426
+        },
+        {
+          "item_idx": 13816,
+          "title": "Amazon Basics Heavy-Duty Vault Case for PlayStation Vita and Vita Slim - 8.",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, PlayStation Systems, PlayStation Vita, Accessories,",
+          "store": "Amazon Basics",
+          "train_pos_pop": 96,
+          "raw_score": 1.1042
+        },
+        {
+          "item_idx": 16846,
+          "title": "Super Mario Odyssey - Nintendo Switch",
+          "sub_category": "Nintendo Switch",
+          "categories": "Video Games, Nintendo Switch, Games",
+          "store": "Nintendo",
+          "train_pos_pop": 687,
+          "raw_score": 1.0804
+        },
+        {
+          "item_idx": 15852,
+          "title": "Orzly Glass Screen Protectors Compatible with Nintendo Switch - Premium Tem",
+          "sub_category": "Nintendo Switch",
+          "categories": "Video Games, Nintendo Switch, Accessories, Faceplates, Protectors & Skins, Scree",
+          "store": "Orzly",
+          "train_pos_pop": 174,
+          "raw_score": 1.071
+        }
+      ],
+      "knn001_top10_live": [
+        {
+          "item_idx": 6905,
+          "title": "Playstation Move Navigation Controller",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, PlayStation Systems, PlayStation 3, Accessories, Co",
+          "store": "PlayStation",
+          "train_pos_pop": 202,
+          "raw_score": 0.1197
+        },
+        {
+          "item_idx": 12256,
+          "title": "Disney Infinity: Disney Originals (2.0 Edition) Merida Figure - Not Machine",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, PlayStation Systems, PlayStation 3, Interactive Gam",
+          "store": "Disney Infinity",
+          "train_pos_pop": 131,
+          "raw_score": 0.0779
+        },
+        {
+          "item_idx": 4411,
+          "title": "PlayStation Eye",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, PlayStation Systems, PlayStation 3, Accessories",
+          "store": "PlayStation",
+          "train_pos_pop": 183,
+          "raw_score": 0.0628
+        },
+        {
+          "item_idx": 10096,
+          "title": "PlayStation 4 500GB Console [Old Model][Discontinued]",
+          "sub_category": "Video Games",
+          "categories": "Video Games",
+          "store": "PlayStation",
+          "train_pos_pop": 1342,
+          "raw_score": 0.0586
+        },
+        {
+          "item_idx": 10942,
+          "title": "DualShock 4 Wireless Controller for PlayStation 4 - Jet Black [Old Model]",
+          "sub_category": "PlayStation 4",
+          "categories": "Video Games, PlayStation 4, Accessories, Controllers, Gamepads & Standard Contro",
+          "store": "PlayStation",
+          "train_pos_pop": 730,
+          "raw_score": 0.058
+        },
+        {
+          "item_idx": 12248,
+          "title": "Disney INFINITY: Marvel Super Heroes (2.0 Edition) Video Game Starter Pack ",
+          "sub_category": "PlayStation 4",
+          "categories": "Video Games, PlayStation 4, Games",
+          "store": "Disney Infinity",
+          "train_pos_pop": 176,
+          "raw_score": 0.0534
+        },
+        {
+          "item_idx": 13465,
+          "title": "Disney Infinity 3.0 Edition: Star Wars Boba Fett Figure",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, PlayStation Systems, PlayStation 3, Interactive Gam",
+          "store": "Disney Infinity",
+          "train_pos_pop": 52,
+          "raw_score": 0.0501
+        },
+        {
+          "item_idx": 10947,
+          "title": "Assassin's Creed IV Black Flag - PC",
+          "sub_category": "PC",
+          "categories": "Video Games, PC, Games",
+          "store": "Ubisoft",
+          "train_pos_pop": 1166,
+          "raw_score": 0.0487
+        },
+        {
+          "item_idx": 9467,
+          "title": "Sports Champions 2 - Playstation 3",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, PlayStation Systems, PlayStation 3, Games",
+          "store": "PlayStation",
+          "train_pos_pop": 121,
+          "raw_score": 0.0412
+        },
+        {
+          "item_idx": 6898,
+          "title": "PlayStation Move Starter Bundle",
+          "sub_category": "Legacy Systems",
+          "categories": "Video Games, Legacy Systems, PlayStation Systems, PlayStation 3, Games",
+          "store": "AODE",
+          "train_pos_pop": 140,
+          "raw_score": 0.0397
+        }
+      ]
+    }
+  ],
+  "preference_form_example": {
+    "source_user_idx": 37040,
+    "selected_3_games": [
+      {
+        "item_idx": 4631,
+        "title": "Word Jong - Nintendo DS",
+        "sub_category": "Legacy Systems",
+        "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Games",
+        "store": "Destineer",
+        "train_pos_pop": 21
+      },
+      {
+        "item_idx": 5367,
+        "title": "Slingo Quest - Nintendo DS",
+        "sub_category": "Value Games Under $20",
+        "categories": "Video Games, Value Games Under $20",
+        "store": "Mumbo Jumbo",
+        "train_pos_pop": 8
+      },
+      {
+        "item_idx": 6753,
+        "title": "Foto Frenzy: Spot the Difference",
+        "sub_category": "Legacy Systems",
+        "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Games",
+        "store": "Storm City Entertainment",
+        "train_pos_pop": 6
+      }
+    ],
+    "mf_ridge_top10_catalog": [
+      {
+        "item_idx": 6004,
+        "title": "Plants vs. Zombies: Game of the Year Edition",
+        "sub_category": "PC",
+        "categories": "Video Games, PC",
+        "store": "PopCap Games",
+        "train_pos_pop": 145,
+        "raw_score": 0.5455
+      },
+      {
+        "item_idx": 8389,
+        "title": "Bejeweled 3 (with Zuma & Feeding Frenzy 2) - Playstation 3",
+        "sub_category": "Legacy Systems",
+        "categories": "Video Games, Legacy Systems, PlayStation Systems, PlayStation 3, Games",
+        "store": "PopCap Games",
+        "train_pos_pop": 80,
+        "raw_score": 0.5151
+      },
+      {
+        "item_idx": 4604,
+        "title": "Professor Layton and the Curious Village - Nintendo DS",
+        "sub_category": "Legacy Systems",
+        "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Games",
+        "store": "Nintendo",
+        "train_pos_pop": 82,
+        "raw_score": 0.4913
+      },
+      {
+        "item_idx": 3403,
+        "title": "New Super Mario Bros",
+        "sub_category": "Legacy Systems",
+        "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Games",
+        "store": "Nintendo",
+        "train_pos_pop": 266,
+        "raw_score": 0.4883
+      },
+      {
+        "item_idx": 3432,
+        "title": "Nintendo DS Lite Cobalt / Black",
+        "sub_category": "Legacy Systems",
+        "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Consoles",
+        "store": "Nintendo",
+        "train_pos_pop": 308,
+        "raw_score": 0.4843
+      },
+      {
+        "item_idx": 5601,
+        "title": "Nintendo DSi Bundle - Metallic Blue",
+        "sub_category": "Legacy Systems",
+        "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Consoles",
+        "store": "Nintendo",
+        "train_pos_pop": 184,
+        "raw_score": 0.4778
+      },
+      {
+        "item_idx": 5895,
+        "title": "Professor Layton and the Diabolical Box",
+        "sub_category": "Legacy Systems",
+        "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Games",
+        "store": "Nintendo",
+        "train_pos_pop": 54,
+        "raw_score": 0.4743
+      },
+      {
+        "item_idx": 5877,
+        "title": "Insten Gen 4 Piece Stylus Pen Set Multi Color for Nintendo DS Lite",
+        "sub_category": "Legacy Systems",
+        "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Accessories, Stylus ",
+        "store": "INSTEN",
+        "train_pos_pop": 90,
+        "raw_score": 0.4611
+      },
+      {
+        "item_idx": 3172,
+        "title": "Animal Crossing: Wild World",
+        "sub_category": "Legacy Systems",
+        "categories": "Video Games, Legacy Systems, Nintendo Systems",
+        "store": "Nintendo",
+        "train_pos_pop": 84,
+        "raw_score": 0.4584
+      },
+      {
+        "item_idx": 3535,
+        "title": "Cooking Mama - Nintendo DS",
+        "sub_category": "Legacy Systems",
+        "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Games",
+        "store": "Majesco",
+        "train_pos_pop": 58,
+        "raw_score": 0.4472
+      }
+    ],
+    "knn001_top10_catalog": [
+      {
+        "item_idx": 4580,
+        "title": "Mah Jong Quest Expeditions",
+        "sub_category": "Legacy Systems",
+        "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Games",
+        "store": "ACTIVISION",
+        "train_pos_pop": 15,
+        "raw_score": 0.0225
+      },
+      {
+        "item_idx": 4781,
+        "title": "Crosswords DS",
+        "sub_category": "Legacy Systems",
+        "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS",
+        "store": "Nintendo",
+        "train_pos_pop": 27,
+        "raw_score": 0.01
+      },
+      {
+        "item_idx": 15741,
+        "title": "amFilm Tempered Glass Screen Protector for Nintendo Switch 2017 (2-Pack)",
+        "sub_category": "Nintendo Switch",
+        "categories": "Video Games, Nintendo Switch, Accessories, Faceplates, Protectors & Skins, Scree",
+        "store": "amFilm",
+        "train_pos_pop": 1901,
+        "raw_score": 0.01
+      },
+      {
+        "item_idx": 4327,
+        "title": "Nintendo DS Lite Play Stand",
+        "sub_category": "Legacy Systems",
+        "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Accessories",
+        "store": "HORI",
+        "train_pos_pop": 4,
+        "raw_score": 0.0098
+      },
+      {
+        "item_idx": 4097,
+        "title": "Touchmaster - Nintendo DS",
+        "sub_category": "Legacy Systems",
+        "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Games",
+        "store": "WB Games",
+        "train_pos_pop": 31,
+        "raw_score": 0.0094
+      },
+      {
+        "item_idx": 8360,
+        "title": "Skyrim VR - PlayStation 4",
+        "sub_category": "PlayStation 4",
+        "categories": "Video Games, PlayStation 4, Games",
+        "store": "Bethesda",
+        "train_pos_pop": 1586,
+        "raw_score": 0.0084
+      },
+      {
+        "item_idx": 10809,
+        "title": "Grand Theft Auto V: Premium Edition - Xbox One [Digital Code]",
+        "sub_category": "Xbox One",
+        "categories": "Video Games, Xbox One, Games",
+        "store": "Rockstar Games",
+        "train_pos_pop": 1550,
+        "raw_score": 0.0082
+      },
+      {
+        "item_idx": 5451,
+        "title": "Jumble Madness - Nintendo DS",
+        "sub_category": "Legacy Systems",
+        "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS, Games",
+        "store": "Destineer",
+        "train_pos_pop": 5,
+        "raw_score": 0.008
+      },
+      {
+        "item_idx": 4956,
+        "title": "Wordmaster - Nintendo DS",
+        "sub_category": "Legacy Systems",
+        "categories": "Video Games, Legacy Systems, Nintendo Systems, Nintendo DS",
+        "store": "Destination Software",
+        "train_pos_pop": 6,
+        "raw_score": 0.0078
+      },
+      {
+        "item_idx": 5107,
+        "title": "Margot's Word Brain - Nintendo DS",
+        "sub_category": "Value Games Under $20",
+        "categories": "Video Games, Value Games Under $20",
+        "store": "Destination Software",
+        "train_pos_pop": 1,
+        "raw_score": 0.0075
+      }
+    ],
+    "contract_adapter_top5": [
+      {
+        "user_idx": -1,
+        "item_idx": 16946,
+        "score": 1.0,
+        "cf_known": true
+      },
+      {
+        "user_idx": -1,
+        "item_idx": 4491,
+        "score": 0.8640889566109209,
+        "cf_known": true
+      },
+      {
+        "user_idx": -1,
+        "item_idx": 8960,
+        "score": 0.800508147709738,
+        "cf_known": true
+      },
+      {
+        "user_idx": -1,
+        "item_idx": 17707,
+        "score": 0.45232097987549663,
+        "cf_known": true
+      },
+      {
+        "user_idx": -1,
+        "item_idx": 15876,
+        "score": 0.34019418295997744,
+        "cf_known": true
+      }
+    ]
+  }
+}
