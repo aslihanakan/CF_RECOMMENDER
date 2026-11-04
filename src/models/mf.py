@@ -53,30 +53,41 @@ except ModuleNotFoundError:
 
 VALID_FOLD_IN_METHODS = ("ridge", "mean")
 
+# Validation hiperparametre taraması (Parça 3/4) sonucunda seçilen en iyi sabitler:
+DEFAULT_FACTORS = 32
+DEFAULT_REGULARIZATION = 0.01
+DEFAULT_ALPHA = 60.0
+DEFAULT_ITERATIONS = 30
+DEFAULT_RANDOM_STATE = 42
+DEFAULT_NUM_THREADS = 1
+DEFAULT_FOLD_IN_METHOD = "ridge"
+
 
 class ALSModel:
     """Implicit Alternating Least Squares (ALS) Matrix Factorization modeli.
 
-    Varsayılan başlangıç parametreleri:
-      - factors        = 64
-      - regularization = 0.1
-      - alpha          = 10.0  (confidence = 1 + alpha * r_ui)
-      - iterations     = 15
+    Varsayılan parametreler (Validation grid taraması en iyi konfigürasyonu):
+      - factors        = 32
+      - regularization = 0.01
+      - alpha          = 60.0  (confidence = 1 + alpha * r_ui)
+      - iterations     = 30
       - random_state   = 42
       - num_threads    = 1     (CPU üzerinde deterministik çalışma)
-      - fold_in_method = "mean"  ("mean" veya "ridge"; 5.000 val simülasyonunda
-                                  HR@10 bazında "mean" 0.6022 vs "ridge" 0.5950)
+      - fold_in_method = "ridge" ("ridge" veya "mean"; seçilen parametrelerle
+                                   5.000 val simülasyonunda "ridge" hem NDCG@10
+                                   (0.4538 vs 0.4004) hem HR@10 (0.6466 vs 0.6062)
+                                   bazında istatistiksel olarak anlamlı üstündür)
     """
 
     def __init__(
         self,
-        factors: int = 64,
-        regularization: float = 0.1,
-        alpha: float = 10.0,
-        iterations: int = 15,
-        random_state: int = 42,
-        num_threads: int = 1,
-        fold_in_method: str = "mean",
+        factors: int = DEFAULT_FACTORS,
+        regularization: float = DEFAULT_REGULARIZATION,
+        alpha: float = DEFAULT_ALPHA,
+        iterations: int = DEFAULT_ITERATIONS,
+        random_state: int = DEFAULT_RANDOM_STATE,
+        num_threads: int = DEFAULT_NUM_THREADS,
+        fold_in_method: str = DEFAULT_FOLD_IN_METHOD,
     ) -> None:
         if fold_in_method not in VALID_FOLD_IN_METHODS:
             raise ValueError(
@@ -381,9 +392,9 @@ class ALSModel:
             regularization=params["regularization"],
             alpha=params["alpha"],
             iterations=params["iterations"],
-            random_state=params.get("random_state", 42),
-            num_threads=params.get("num_threads", 1),
-            fold_in_method=params.get("fold_in_method", "mean"),
+            random_state=params.get("random_state", DEFAULT_RANDOM_STATE),
+            num_threads=params.get("num_threads", DEFAULT_NUM_THREADS),
+            fold_in_method=params.get("fold_in_method", DEFAULT_FOLD_IN_METHOD),
         )
         model.user_factors = np.load(folder / "user_factors.npy")
         model.item_factors = np.load(folder / "item_factors.npy")

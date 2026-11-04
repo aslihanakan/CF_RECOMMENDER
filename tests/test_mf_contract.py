@@ -249,8 +249,8 @@ def main() -> None:
         verbose=False,
     )["overall"]
 
-    # Val'de daha iyi olan yöntemi varsayılan olarak ayarla
-    best_method = "ridge" if eval_ridge["hit_rate"] >= eval_mean["hit_rate"] else "mean"
+    # Birincil ölçüt NDCG@10'a göre varsayılan fold_in_method'u ayarla
+    best_method = "ridge" if eval_ridge["ndcg"] >= eval_mean["ndcg"] else "mean"
     als_model.fold_in_method = best_method
 
     print("\n  " + "=" * 86)
