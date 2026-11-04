@@ -149,11 +149,16 @@ topk_new_user = mf_model.recommend_from_items(
    - Eğitim setinde hiç görünmeyen **84 tamamen soğuk ürün** (`cold_items`, validation'da `114` hedef satırı) ve yalnızca `label == 0` (`rating < 4`) etkileşimi olup hiç pozitif etkileşimi olmayan **159 ürün** (toplam `243` ürün, validation'da `263` hedef satırı) için pozitif etkileşim matrisinde sütun toplamı sıfırdır.
    - `ALSModel.fit()` sırasında bu `243` ürünün faktör vektörleri sıfırlanır (`item_factors[i] = 0.0`, `float32` sayısal gürültü eşiği `norm < 1e-4` kontrolü dahil).
    - `ContractAdapter` bu ürünlere `cf_known=False` ve `score=0.0` atar; `evaluate()` ise soğuk ürünleri `-1e9` cezası ile listenin en sonuna iter. Sonuç olarak soğuk kovada (`pop=0`, `N=263`) `ALS MF` isabet oranı **HR@10 = 0.0000** (`0 / 263` hit) düzeyindedir.
-2. **Baş (`pop >= 112`) Kovasında `Item-kNN (pw=0.01)`'in Gerisinde Kalması:**
-   - Popülerlik kovası analizinde (`N = 75.799`), `ALS MF` kuyruk (`pop=1..23`, `N=25.320`) kovasında **HR@10 = 0.4654 / NDCG@10 = 0.2417** ile `Item-kNN (pw=0.01)`'i (`0.2231 / 0.1398`) **+24.23 puan HR@10** geçerken ve orta (`pop=24..111`, `N=25.114`) kovada **HR@10 = 0.7703 / NDCG@10 = 0.5619** ile `Item-kNN (pw=0.01)`'i (`0.7088 / 0.4022`) **+6.15 puan HR@10** aşarken; en popüler ürünlerin yer aldığı **baş (`pop=112..1.901`, `N=25.102`)** kovasında **HR@10 = 0.8463 / NDCG@10 = 0.7127** (`21.245` hit) elde ederek açık popülerlik önyargısı taşıyan `Item-kNN (pw=0.01)`'in (**HR@10 = 0.9985 / NDCG@10 = 0.8216**, `25.064` hit) **-15.22 puan HR@10** gerisinde kalmaktadır.
-3. **Gerçek Katalog Kapsamı (`Coverage@10`) Ödünleşimi:**
-   - `10.000` validation kullanıcısı (`seed=42`) için 25.610 ürünlük tam katalogdan `recommend_topk(k=10, mode="live")` çağrıldığında, `ALS MF` toplam **2.116 benzersiz ürün (%8.26 gerçek katalog kapsamı)** önermektedir (önerilerin **%32.17**'si en popüler 100 üründedir).
-   - Bu kapsam, `Popularity` modelinden (**%0.06**, `15` ürün, ilk 100 payı **%100.00**) çok daha geniş olsa da `Item-kNN (pw=0.0)` (**%50.85**, `13.022` ürün) ve `Item-kNN (pw=0.01)` (**%16.68**, `4.272` ürün) modellerinin gerisindedir. Düşük boyutlu (`factors=32`) iç çarpım uzayı ve yüksek güven ağırlığı (`alpha=150`), genel doğruluk (`NDCG@10 = 0.5029`) sağlarken tam katalog sıralamasında yüksek normlu orta-üst popülerlikteki ürünlerde yoğunlaşmaya yol açar.
+2. **Baş (`pop >= 112`) Kovasında Popülerlik Taklidi:**
+   - Popülerlik kovası analizinde (`N = 75.799`), `Popularity = 1.0000`, `Item-kNN (pw=0.01) = 0.9985` (`25.064` isabet) ve `ALS MF = 0.8463` (`21.245` isabet) ölçülmüştür. Baş kovada `Item-kNN (pw=0.01)` popülerlik ağırlığı terimi nedeniyle neredeyse Popularity modelini taklit etmektedir (0.9985 vs 1.0000). Buna karşılık `ALS MF`, kuyruk (`pop=1..23`, `N=25.320`) kovasında **HR@10 = 0.4654 / NDCG@10 = 0.2417** ile `Item-kNN (pw=0.01)` modelini (`0.2231 / 0.1398`) **+24.23 puan HR@10** geçmekte ve orta (`pop=24..111`, `N=25.114`) kovada **HR@10 = 0.7703 / NDCG@10 = 0.5619** ile `Item-kNN (pw=0.01)` modelini (`0.7088 / 0.4022`) **+6.15 puan HR@10** ve **+15.97 puan NDCG@10** aşmaktadır.
+3. **Gerçek Katalog Kapsamı (`Coverage@10`) ve Alpha Ekseni Ödünleşimi:**
+   - factors=32, reg=0.01, iterations=50 sabitken alpha ∈ {40, 60, 100, 150} taramasında:
+     - `alpha=40`: NDCG@10 = 0.4846, HR@10 = 0.6702, Gerçek Katalog Cov@10 = %5.04 (1.292 ürün), İlk 100 payı = %37.09
+     - `alpha=60`: NDCG@10 = 0.4927, HR@10 = 0.6796, Gerçek Katalog Cov@10 = %5.95 (1.525 ürün), İlk 100 payı = %35.22
+     - `alpha=100`: NDCG@10 = 0.4998, HR@10 = 0.6877, Gerçek Katalog Cov@10 = %7.20 (1.845 ürün), İlk 100 payı = %33.41
+     - `alpha=150`: NDCG@10 = 0.5029, HR@10 = 0.6910, Gerçek Katalog Cov@10 = %8.26 (2.116 ürün), İlk 100 payı = %32.17
+   - Grid genişletme aşamasında (a: f=64, α=10, it=15 -> b: f=32, α=60, it=30 -> c1: f=32, α=150, it=50) NDCG@10 (0.4444 -> 0.4912 -> 0.5029) ve gerçek katalog kapsamı (%4.88 -> %5.98 -> %8.26) birlikte artmıştır. Ancak genel katalogda `ALS MF`'nin gerçek kapsamı (%8.26, 2.116 ürün), `Item-kNN (pw=0.0)` (%50.85, 13.022 ürün) ve `Item-kNN (pw=0.01)` (%16.68, 4.272 ürün) modellerinin altındadır.
+   - **HİPOTEZ:** Hibrit katmanda daha düşük veya farklı alpha/regularization ayarlı bir MF ya da Content-Based (CB) bileşeni daha geniş kapsamlı bir aday kaynağı olarak test edilebilir.
 
 ---
 
@@ -164,4 +169,7 @@ topk_new_user = mf_model.recommend_from_items(
 2. **Gerçek Katalog Kapsamını (`%8.26`) Genişletme Hipotezi:**
    - `ALS MF` tek başına tam katalogda `2.116` (%8.26) benzersiz ürün önermektedir; Content-Based katmanın ürün meta verileri üzerinden uzun kuyruk ürünlerine vereceği ek skor katkısının bu katalog kapsamını genişletebileceği bir **HİPOTEZ** olarak hibrit aşamada test edilmelidir.
 3. **Yeni Kullanıcı (`score_from_items`) Entegrasyonu:**
-   - Sistemde geçmişi olmayan yeni kullanıcılar 3, 4 veya 5 oyun seçtiğinde `ALS MF (ridge fold-in)` 5.000 kullanıcılık validation simülasyonunda 3 oyunda **HR@10 = 0.6624 / NDCG@10 = 0.4704** (5 oyunda **HR@10 = 0.7002 / NDCG@10 = 0.4992**) ile `Item-kNN (pw=0.01)` modelini 3 oyunda **+0.0512 ± 0.0074 HR@10** ($z = +6.92$) ve **+0.0571 ± 0.0053 NDCG@10** ($z = +10.76$) farkla anlamlı biçimde geçmektedir. Hibrit katmanda yeni kullanıcı soğuk başlangıç (preference form) akışında birincil CF skoru olarak `ALSModel.score_from_items` (`method="ridge"`) kullanılmalıdır.
+   - Simülasyon veri kümesinde (eğitimde en az 5 pozitif etkileşimi olan `5.000` validation kullanıcısı popülasyonunda):
+     - 3 oyun seçiminde `Item-kNN (pw=0)` HR@10'da Popularity'nin altında (0.5286 vs 0.5460), NDCG@10'da ise üstündedir (0.3758 vs 0.3335).
+     - Bu nedenle yeni kullanıcı yolunda `Item-kNN (pw=0.01)` (HR@10 = 0.6112, NDCG@10 = 0.4133) veya `MF-ridge` (HR@10 = 0.6624, NDCG@10 = 0.4704) tercih edilmelidir.
+     - `MF-ridge`, `Item-kNN (pw=0.01)` modeline göre 3 oyunda **+0.0512 ± 0.0074 HR@10** ($z = +6.92$) ve **+0.0571 ± 0.0053 NDCG@10** ($z = +10.76$) fark sağlamaktadır. Hibrit katmanda yeni kullanıcı tercih formu akışında birincil CF skoru olarak `ALSModel.score_from_items(method="ridge")` veya `Item-kNN (pw=0.01)` kullanılmalıdır.
