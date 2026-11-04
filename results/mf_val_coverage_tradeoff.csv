@@ -1,0 +1,6 @@
+config_id,model_label,factors,regularization,alpha,iterations,val_hr_at_10,val_ndcg_at_10,pool_coverage_at_10_pct,pool_coverage_at_10_n,unique_rec_items,catalog_cov_25610_pct,catalog_cov_25367_known_pct,top100_pop_item_share_pct,mean_pop_percentile_rank,mean_rec_item_pop,median_rec_item_pop,fit_seconds,cov_eval_seconds
+(a) Varsayılan Başlangıç,"ALS (f=64, reg=0.1, alpha=10, iter=15)",64,0.1,10.0,15,0.617752,0.444366,84.5646,21657,1251,4.8848,4.9316,33.361,97.8612,356.69,259.0,5.14,20.2811
+(b) Parça 3 Seçilen,"ALS (f=32, reg=0.01, alpha=60, iter=30)",32,0.01,60.0,30,0.677951,0.49118,85.4276,21878,1531,5.9781,6.0354,35.382,97.7864,370.14,263.0,5.78,11.2181
+(c1) Stage 3 #1 (Yeni Kazanan),"ALS (f=32, reg=0.01, alpha=150, iter=50)",32,0.01,150.0,50,0.690972,0.502934,89.7657,22989,2116,8.2624,8.3415,32.168,97.3794,343.37,245.0,10.06,13.8551
+(c2) Stage 3 #2,"ALS (f=32, reg=0.10, alpha=150, iter=50)",32,0.1,150.0,50,0.690563,0.502228,89.7735,22991,2136,8.3405,8.4204,31.977,97.3765,343.37,245.0,33.39,36.7089
+(c3) Stage 3 #3,"ALS (f=32, reg=0.01, alpha=150, iter=30)",32,0.01,150.0,30,0.687951,0.500057,89.4651,22912,2135,8.3366,8.4164,32.355,97.3908,345.47,245.0,18.47,36.8473

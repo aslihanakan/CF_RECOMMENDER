@@ -53,11 +53,11 @@ except ModuleNotFoundError:
 
 VALID_FOLD_IN_METHODS = ("ridge", "mean")
 
-# Validation hiperparametre taraması (Parça 3/4) sonucunda seçilen en iyi sabitler:
+# Validation hiperparametre taraması (Parça 3b Stage 3) sonucunda seçilen en iyi sabitler:
 DEFAULT_FACTORS = 32
 DEFAULT_REGULARIZATION = 0.01
-DEFAULT_ALPHA = 60.0
-DEFAULT_ITERATIONS = 30
+DEFAULT_ALPHA = 150.0
+DEFAULT_ITERATIONS = 50
 DEFAULT_RANDOM_STATE = 42
 DEFAULT_NUM_THREADS = 1
 DEFAULT_FOLD_IN_METHOD = "ridge"
@@ -66,16 +66,16 @@ DEFAULT_FOLD_IN_METHOD = "ridge"
 class ALSModel:
     """Implicit Alternating Least Squares (ALS) Matrix Factorization modeli.
 
-    Varsayılan parametreler (Validation grid taraması en iyi konfigürasyonu):
+    Varsayılan parametreler (Validation Stage 3 grid taraması en iyi konfigürasyonu):
       - factors        = 32
       - regularization = 0.01
-      - alpha          = 60.0  (confidence = 1 + alpha * r_ui)
-      - iterations     = 30
+      - alpha          = 150.0 (confidence = 1 + alpha * r_ui)
+      - iterations     = 50
       - random_state   = 42
       - num_threads    = 1     (CPU üzerinde deterministik çalışma)
       - fold_in_method = "ridge" ("ridge" veya "mean"; seçilen parametrelerle
                                    5.000 val simülasyonunda "ridge" hem NDCG@10
-                                   (0.4538 vs 0.4004) hem HR@10 (0.6466 vs 0.6062)
+                                   (0.4704 vs 0.4389) hem HR@10 (0.6624 vs 0.6474)
                                    bazında istatistiksel olarak anlamlı üstündür)
     """
 
